@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skinet.API", "Skinet.API\Skinet.API.csproj", "{769977E5-C648-4E9A-96DB-1E5972D84243}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{769977E5-C648-4E9A-96DB-1E5972D84243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769977E5-C648-4E9A-96DB-1E5972D84243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769977E5-C648-4E9A-96DB-1E5972D84243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769977E5-C648-4E9A-96DB-1E5972D84243}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFCACE9B-9815-4774-934D-2F52B0CFDE81}
+	EndGlobalSection
+EndGlobal
