@@ -1,0 +1,3 @@
+URL: https://www.udemy.com/course/learn-to-build-an-e-commerce-app-with-net-core-and-angular/learn/lecture/18136628#overview
+Title: Build a proof of concept e-commerce store using Angular, .Net and Stripe for payment processing
+Github: github.com/trycatchlearn/skinet/commits/master
