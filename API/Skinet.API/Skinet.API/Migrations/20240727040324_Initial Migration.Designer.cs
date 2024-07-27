@@ -11,7 +11,7 @@ using Skinet.API.Data;
 namespace Skinet.API.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20240727034215_Initial Migration")]
+    [Migration("20240727040324_Initial Migration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -32,8 +32,8 @@ namespace Skinet.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
