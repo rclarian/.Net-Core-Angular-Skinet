@@ -3,6 +3,12 @@ Title: Build a proof of concept e-commerce store using Angular, .Net and Stripe 
 Github: github.com/trycatchlearn/skinet/commits/master
 
 --Need to install in API
-Microsoft.EntityFrameworkCore.SqlServer - version 7.0.20 or 7.0.5
-Microsoft.EntityFrameworkCore.Tools - version 7.0.20 or 7.0.5
-Microsoft.EntityFrameworkCore.Design - version 7.0.20 or 7.0.5
+* Microsoft.EntityFrameworkCore.SqlServer - version 7.0.20 or 7.0.5
+* Microsoft.EntityFrameworkCore.Tools - version 7.0.20 or 7.0.5
+* Microsoft.EntityFrameworkCore.Design - version 7.0.20 or 7.0.5
+
+--Run EntityFramework Core Migrations
+* Tools > Nuget Package Manager > Nuget Package Console
+- 2 Commands
+* Add-Migration "Name of Migration"
+* Update-Database
