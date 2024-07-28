@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skinet.API", "Skinet.API\Skinet.API.csproj", "{769977E5-C648-4E9A-96DB-1E5972D84243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skinet.API", "Skinet.API\Skinet.API.csproj", "{769977E5-C648-4E9A-96DB-1E5972D84243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2B416A03-159D-475F-94B0-E6DC8CAD94DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{B525D3FA-6FDE-4199-8ABA-2632A30DA8CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{769977E5-C648-4E9A-96DB-1E5972D84243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{769977E5-C648-4E9A-96DB-1E5972D84243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{769977E5-C648-4E9A-96DB-1E5972D84243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B416A03-159D-475F-94B0-E6DC8CAD94DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B416A03-159D-475F-94B0-E6DC8CAD94DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B416A03-159D-475F-94B0-E6DC8CAD94DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B416A03-159D-475F-94B0-E6DC8CAD94DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B525D3FA-6FDE-4199-8ABA-2632A30DA8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B525D3FA-6FDE-4199-8ABA-2632A30DA8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B525D3FA-6FDE-4199-8ABA-2632A30DA8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B525D3FA-6FDE-4199-8ABA-2632A30DA8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
