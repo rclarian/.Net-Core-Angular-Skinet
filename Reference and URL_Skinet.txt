@@ -11,4 +11,7 @@ Github: github.com/trycatchlearn/skinet/commits/master
 * Tools > Nuget Package Manager > Nuget Package Console
 - 2 Commands
 * Add-Migration "Name of Migration"
+* Add-Migration "Adding Entities" -p Infrastructure -s Skinet.API -o Data/Migrations
 * Update-Database
+* Remove-Migration
+* Remove-Migration -p Infrastructure -s Skinet.API
