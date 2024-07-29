@@ -28,5 +28,15 @@ namespace Infrastructure.Data
         {
             return await _dbContext.Products.ToListAsync();
         }
+
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        {
+            return await _dbContext.ProductBrands.ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
+        {
+            return await _dbContext.ProductTypes.ToListAsync();
+        }
     }
 }
