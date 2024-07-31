@@ -30,19 +30,23 @@ namespace Skinet.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            //return Ok(await _productRepo.GetProductsAsync());
             var spec = new ProductsWithTypesAndBrandsSpecification();
 
             var products = await _productsRepo.ListAsync(spec);
 
-            return Ok(products);
+            if (products != null)
+            {
+                return Ok(products);
+            }
+            return NotFound();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            //var product = await _productRepo.GetProductByIdAsync(id);
-            var product = await _productsRepo.GetByIdAsync(id);
+            var spec = new ProductsWithTypesAndBrandsSpecification(id);
+
+            var product = await _productsRepo.GetEntityWithSpec(spec);
 
             if (product != null)
             {
