@@ -2,6 +2,7 @@
 using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
+using Skinet.API.DTOs;
 
 
 namespace Skinet.API.Controllers
@@ -28,7 +29,7 @@ namespace Skinet.API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<ProductToReturnDto>>> GetProducts()
         {
             var spec = new ProductsWithTypesAndBrandsSpecification();
 
@@ -36,13 +37,23 @@ namespace Skinet.API.Controllers
 
             if (products != null)
             {
-                return Ok(products);
+                var productReturn = products.Select(product => new ProductToReturnDto
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    PictureUrl = product.PictureUrl,
+                    Price = product.Price,
+                    ProductBrand = product.ProductBrand.Name,
+                    ProductType = product.ProductType.Name
+                }).ToList();
+                return Ok(productReturn);
             }
             return NotFound();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
 
@@ -50,7 +61,18 @@ namespace Skinet.API.Controllers
 
             if (product != null)
             {
-                return Ok(product);
+                var productReturn = new ProductToReturnDto 
+                { 
+                    Id = product.Id,
+                    Name = product.Name,
+                    Description = product.Description,
+                    PictureUrl = product.PictureUrl,
+                    Price = product.Price,
+                    ProductBrand = product.ProductBrand.Name,
+                    ProductType = product.ProductType.Name
+                };
+
+                return Ok(productReturn);
             }
             return NotFound();
         }
