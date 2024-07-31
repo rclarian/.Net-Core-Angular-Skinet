@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using AutoMapper;
+using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
@@ -15,16 +16,19 @@ namespace Skinet.API.Controllers
         private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
         private readonly IGenericRepository<ProductType> _productTypeRepo;
+        private readonly IMapper _mapper;
 
         public ProductsController(
             IGenericRepository<Product> productsRepo, 
             IGenericRepository<ProductBrand> productBrandRepo,
-            IGenericRepository<ProductType> productTypeRepo)
+            IGenericRepository<ProductType> productTypeRepo,
+            IMapper mapper)
         {
             //this._productRepo = productRepo;
             this._productsRepo = productsRepo;
             this._productBrandRepo = productBrandRepo;
             this._productTypeRepo = productTypeRepo;
+            this._mapper = mapper;
         }
 
 
@@ -61,18 +65,7 @@ namespace Skinet.API.Controllers
 
             if (product != null)
             {
-                var productReturn = new ProductToReturnDto 
-                { 
-                    Id = product.Id,
-                    Name = product.Name,
-                    Description = product.Description,
-                    PictureUrl = product.PictureUrl,
-                    Price = product.Price,
-                    ProductBrand = product.ProductBrand.Name,
-                    ProductType = product.ProductType.Name
-                };
-
-                return Ok(productReturn);
+                return Ok(_mapper.Map<Product, ProductToReturnDto>(product));
             }
             return NotFound();
         }

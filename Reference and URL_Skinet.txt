@@ -15,3 +15,6 @@ Github: github.com/trycatchlearn/skinet/commits/master
 * Update-Database
 * Remove-Migration
 * Remove-Migration -p Infrastructure -s Skinet.API
+
+--Install AutoMapper
+* AutoMapper.Extensions.Microsoft.DependencyInjection -- version 12.0.0
