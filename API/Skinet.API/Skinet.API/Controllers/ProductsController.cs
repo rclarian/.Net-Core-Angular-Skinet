@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,17 +11,17 @@ namespace Skinet.API.Controllers
     public class ProductsController : Controller
     {
         //private readonly IProductRepository _productRepo;
-        private readonly IGenericRepository<Product> _productsRep;
+        private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandRepo;
         private readonly IGenericRepository<ProductType> _productTypeRepo;
 
         public ProductsController(
-            IGenericRepository<Product> productsRep, 
+            IGenericRepository<Product> productsRepo, 
             IGenericRepository<ProductBrand> productBrandRepo,
             IGenericRepository<ProductType> productTypeRepo)
         {
             //this._productRepo = productRepo;
-            this._productsRep = productsRep;
+            this._productsRepo = productsRepo;
             this._productBrandRepo = productBrandRepo;
             this._productTypeRepo = productTypeRepo;
         }
@@ -30,14 +31,18 @@ namespace Skinet.API.Controllers
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
             //return Ok(await _productRepo.GetProductsAsync());
-            return Ok(await _productsRep.ListAllAsync());
+            var spec = new ProductsWithTypesAndBrandsSpecification();
+
+            var products = await _productsRepo.ListAsync(spec);
+
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             //var product = await _productRepo.GetProductByIdAsync(id);
-            var product = await _productsRep.GetByIdAsync(id);
+            var product = await _productsRepo.GetByIdAsync(id);
 
             if (product != null)
             {
