@@ -26,6 +26,9 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
+//Error on object reference
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
