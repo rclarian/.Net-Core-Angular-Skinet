@@ -1,6 +1,7 @@
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Skinet.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,9 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+
+//Middleware
+app.UseMiddleware<ExceptionMiddleware>();
 
 //Error on object reference
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
