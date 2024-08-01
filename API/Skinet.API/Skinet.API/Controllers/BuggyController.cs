@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Skinet.API.Errors;
 
 namespace Skinet.API.Controllers
 {
@@ -19,12 +20,11 @@ namespace Skinet.API.Controllers
 
             if(thing == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse(404));
             }
 
             return Ok();
         }
-
 
         [HttpGet("servererror")]
         public ActionResult GetServerError()
@@ -35,11 +35,10 @@ namespace Skinet.API.Controllers
             return Ok();
         }
 
-
         [HttpGet("badrequest")]
         public ActionResult GetBadRequest()
         {
-            return BadRequest();
+            return BadRequest(new ApiResponse(400));
         }
 
 
