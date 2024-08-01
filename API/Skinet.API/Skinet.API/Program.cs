@@ -1,6 +1,8 @@
 using Core.Interfaces;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Skinet.API.Errors;
 using Skinet.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +26,22 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 //Automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = actionContext =>
+    {
+        var errors = actionContext.ModelState
+            .Where(e => e.Value.Errors.Count > 0)
+            .SelectMany(x => x.Value.Errors)
+            .Select(x => x.ErrorMessage).ToArray();
+
+        var errorResponse = new ApiValidationErrorResponse
+        {
+            Errors = errors
+        };
+        return new BadRequestObjectResult(errorResponse);
+    };
+});
 
 var app = builder.Build();
 
