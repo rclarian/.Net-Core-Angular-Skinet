@@ -9,9 +9,7 @@ using System.Collections.Generic;
 
 namespace Skinet.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : Controller
+    public class ProductsController : BaseApiController
     {
         //private readonly IProductRepository _productRepo;
         private readonly IGenericRepository<Product> _productsRepo;
