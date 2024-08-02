@@ -5,7 +5,6 @@ using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
 using Skinet.API.DTOs;
 using Skinet.API.Errors;
-using System.Collections.Generic;
 
 
 namespace Skinet.API.Controllers
@@ -31,11 +30,10 @@ namespace Skinet.API.Controllers
             this._mapper = mapper;
         }
 
-
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts(string sort)
+        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts(string sort, int? brandId, int? typeId)
         {
-            var spec = new ProductsWithTypesAndBrandsSpecification(sort);
+            var spec = new ProductsWithTypesAndBrandsSpecification(sort, brandId, typeId);
 
             var products = await _productsRepo.ListAsync(spec);
 
