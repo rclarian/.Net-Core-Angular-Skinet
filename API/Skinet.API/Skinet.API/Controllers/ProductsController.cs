@@ -4,6 +4,7 @@ using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
 using Skinet.API.DTOs;
+using Skinet.API.Errors;
 using System.Collections.Generic;
 
 
@@ -46,6 +47,8 @@ namespace Skinet.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
@@ -56,7 +59,7 @@ namespace Skinet.API.Controllers
             {
                 return Ok(_mapper.Map<Product, ProductToReturnDto>(product));
             }
-            return NotFound();
+            return NotFound(new ApiResponse(404));
         }
 
         [HttpGet("brands")]
